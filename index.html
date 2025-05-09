@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+          --primary: #8e6c88;
+          --secondary: #d4afb9;
+          --accent: #d1cfe2;
+          --text: #4a2c2a;
+          --light: #f8f4f9;
+          --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Montserrat', sans-serif;
+          background-color: var(--light);
+          color: var(--text);
+          line-height: 1.6;
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          background-image:
+            radial-gradient(circle at 10% 20%, rgba(212, 175, 185, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 90% 80%, rgba(142, 108, 136, 0.1) 0%, transparent 20%);
+        }
+
+        .invitation-container {
+          width: 100%;
+          max-width: 800px;
+        }
+
+        .invitation {
+          background: white;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          position: relative;
+        }
+
+        .invitation::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 8px;
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .hero-image {
+          width: 100%;
+          height: auto;
+          max-height: 400px;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
+
+        .invitation-content {
+          padding: 25px;
+          text-align: center;
+        }
+
+        h1 {
+          font-family: 'Dancing Script', cursive;
+          font-size: clamp(2rem, 5vw, 3rem);
+          color: var(--primary);
+          margin-bottom: 15px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+          position: relative;
+          display: inline-block;
+        }
+
+        h1::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .greeting {
+          font-size: 1rem;
+          margin-bottom: 15px;
+          color: #666;
+        }
+
+        .couple-names {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+          color: var(--primary);
+          margin: 20px 0;
+          position: relative;
+          display: inline-block;
+        }
+
+        .couple-names::before, .couple-names::after {
+          content: '✽';
+          color: var(--secondary);
+          margin: 0 10px;
+          font-size: 1.2rem;
+          vertical-align: middle;
+        }
+
+        .details {
+          margin: 20px 0;
+          font-size: 1rem;
+          color: #555;
+        }
+
+        .venue-details {
+          background: linear-gradient(135deg, var(--accent), var(--light));
+          padding: 12px;
+          border-radius: 8px;
+          margin: 20px auto;
+          max-width: 400px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+          text-align: left;
+        }
+
+        .venue-details div {
+          margin: 6px 0;
+          font-weight: bold;
+          color: var(--primary);
+          font-size: 0.9rem;
+        }
+
+        .venue-details i {
+          margin-right: 8px;
+          min-width: 20px;
+          text-align: center;
+        }
+
+        .venue-address {
+          font-weight: normal;
+          color: var(--text);
+          margin-top: 8px;
+          font-size: 0.85rem;
+          line-height: 1.5;
+        }
+
+        .map-button {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          color: white;
+          padding: 12px 25px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: bold;
+          margin: 15px 0;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(142, 108, 136, 0.3);
+          font-size: 0.9rem;
+        }
+
+        .map-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(142, 108, 136, 0.4);
+        }
+
+        .map-button i {
+          margin-right: 8px;
+        }
+
+        .footer {
+          margin-top: 25px;
+          font-style: italic;
+          color: var(--primary);
+          position: relative;
+          font-size: 0.9rem;
+        }
+
+        .footer::before {
+          content: '';
+          position: absolute;
+          top: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .floral-decoration {
+          position: absolute;
+          opacity: 0.1;
+          z-index: -1;
+          font-size: 2rem;
+        }
+
+        .floral-1 {
+          top: 30px;
+          left: 15px;
+          transform: rotate(-15deg);
+          color: var(--primary);
+        }
+
+        .floral-2 {
+          bottom: 30px;
+          right: 15px;
+          transform: rotate(15deg);
+          color: var(--secondary);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .invitation-content > * {
+          animation: fadeIn 0.6s ease forwards;
+          opacity: 0;
+        }
+
+        .invitation-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .invitation-content > *:nth-child(2) { animation-delay: 0.3s; }
+        .invitation-content > *:nth-child(3) { animation-delay: 0.5s; }
+        .invitation-content > *:nth-child(4) { animation-delay: 0.7s; }
+        .invitation-content > *:nth-child(5) { animation-delay: 0.9s; }
+        .invitation-content > *:nth-child(6) { animation-delay: 1.1s; }
+        .invitation-content > *:nth-child(7) { animation-delay: 1.3s; }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+          body {
+            padding: 10px;
+          }
+
+          .invitation-content {
+            padding: 20px 15px;
+          }
+
+          .venue-details {
+            padding: 10px;
+            font-size: 0.8rem;
+          }
+
+          .venue-address {
+            font-size: 0.8rem;
+          }
+
+          .map-button {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+          }
+
+          .floral-decoration {
+            font-size: 1.5rem;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="invitation-container">
+    <div class="invitation">
+        <img src="https://t3.ftcdn.net/jpg/06/33/14/24/360_F_633142445_a28s95TfFK6wm8VdCSO8zDEwRfS6bAho.jpg" alt="Wedding invitation" class="hero-image">
+
+        <div class="floral-decoration floral-1">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <div class="floral-decoration floral-2">
+            <i class="fas fa-leaf"></i>
+        </div>
+
+        <div class="invitation-content">
+            <h1>Wedding Invitation</h1>
+
+            <p class="greeting">
+                Dear Friends and Family,
+            </p>
+
+            <p class="details">
+                With joy in our hearts, we invite you to celebrate the union of
+            </p>
+
+            <div class="couple-names">
+                Somesh & Mamatha
+            </div>
+
+            <div class="venue-details">
+                <div><i class="far fa-calendar-alt"></i> Wednesday, May 14th, 2025</div>
+                <div><i class="far fa-clock"></i> Muhurtham at 7:30 AM to 9:15 AM</div>
+                <div class="venue-address">
+                    <i class="fas fa-map-marker-alt"></i> Kuruhinashetty Kalyanamandapam,<br>
+                    Bellary Road, Nesepet, Raydurgam- 515865,AP<br>
+                </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/VfUFMg9Cpz377Xd17" target="_blank" class="map-button">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a>
+
+            <p class="details">
+                Your presence will grace our celebration as we begin our journey of love and togetherness.
+                Join us for an evening of blessings, laughter, and cherished memories.
+            </p>
+
+            <div class="footer">
+                We look forward to celebrating with you!<br><br>
+                Warm regards,<br>
+                <strong>Somesh , Chidananda & Family</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add a simple animation when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.invitation').style.opacity = '1';
+    });
+</script>
+</body>
+</html>
